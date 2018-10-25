@@ -6,7 +6,8 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 
 const records = require('./db/records')
-const recordRoutes
+
+
 // middleware
 app.use(logger('dev'))
 app.use(bodyParser.json())
@@ -16,6 +17,9 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.get('/', (req, res) => {
   res.send('Please start record')
 })
+
+const recordRoutes = require('./routes/record_routes')
+app.use('/records', recordRoutes)
 
 // all records
 // app.get('/records', (req, res) => {
@@ -57,9 +61,19 @@ app.put('/records/:id', (req, res) => {
     album: req.body.album,
     year: req.body.year
   }
-  records[req.params.id - 1] = updateRecord
-  res.send(records)
-  console.log(records)
+
+  records.filter( (d,i) => {
+    if(d.id == req.params.id) {
+      let obj = {
+         id: req.params.id,
+         artist: req.body.artist,
+         album: req.body.album,
+         year: req.body.year
+      }
+      records[i] = obj
+      res.send(records[i])
+    }
+  })
 })
 
 // add error handler
