@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 const recordRoutes = require('./routes/record_routes')
 app.use('/records', recordRoutes)
 
-// all records ... all of them...again
+// all records ... all...every
 // app.get('/records', (req, res) => {
 //   res.json({
 //     message: 'ok',
