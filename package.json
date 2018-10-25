@@ -1,0 +1,11 @@
+{
+  "name": "record_collection_express_mvc",
+  "version": "1.0.0",
+  "description": "Record Store CRUD express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SteveVW",
+  "license": "ISC"
+}
