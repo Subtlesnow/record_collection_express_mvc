@@ -6,6 +6,7 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 
 const records = require('./db/records')
+const recordRoutes
 // middleware
 app.use(logger('dev'))
 app.use(bodyParser.json())
@@ -17,32 +18,21 @@ app.get('/', (req, res) => {
 })
 
 // all records
-app.get('/records', (req, res) => {
-  res.json({
-    message: 'ok',
-    records
-  })
-})
+// app.get('/records', (req, res) => {
+//   res.json({
+//     message: 'ok',
+//     records
+//   })
+// })
 
 // getById
-app.get('/records/:id', (req, res) => {
-  const recordById = records.filter((record) => {
-    return record.id == req.params.id
-  })
-  res.json({
-    message: 'ok',
-    recordById
-  })
-})
-
-// delete by id
-// app.delete('/records/:id', (req, res) => {
-//   const deleteRecord = records.filter(record => {
+// app.get('/records/:id', (req, res) => {
+//   const recordById = records.filter((record) => {
 //     return record.id == req.params.id
 //   })
 //   res.json({
-//     message: 'deleted',
-//     deleteRecord
+//     message: 'ok',
+//     recordById
 //   })
 // })
 
@@ -53,11 +43,11 @@ app.delete('/records/:id', (req, res) => {
 })
 
 // post route
-app.post('/records', (req, res) => {
-  const record = req.body
-  records.push(req.body)
-  res.send(records[records.length-1])
-})
+// app.post('/records', (req, res) => {
+//   const record = req.body
+//   records.push(req.body)
+//   res.send(records[records.length-1])
+// })
 
 // put route
 app.put('/records/:id', (req, res) => {
