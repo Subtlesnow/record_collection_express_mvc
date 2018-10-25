@@ -1,8 +1,8 @@
-const Record = require('../models/quote')
+const Record = require('../model/records')
 
 const recordController = {}
 
-
+// get all
 recordController.index = (req, res) => {
   let records = Record.findAll()
   res.json({
@@ -11,15 +11,13 @@ recordController.index = (req, res) => {
   })
 }
 
-// get all
-recordController.show = (req, res) => {
-  Record.findById(req.params.id)
-    .then(record => {
-      res.json({
-        message: 'ok',
-        quote
-      })
-    })
+// get one
+recordController.getOne = (req, res) => {
+  let record = Record.findById(req.params.id)
+  res.json({
+    message: 'ok',
+    record
+  })
 }
 
 // create

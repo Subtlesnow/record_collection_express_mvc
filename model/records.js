@@ -6,9 +6,16 @@ Record.findAll = () => {
   return records
 }
 
-// Record.findById = (id) => {
-//   return
-// }
+Record.findById = (id) => {
+    const recordById = records.filter((record) => {
+    return record.id == id
+  })
+  return {
+    message: 'ok',
+    recordById
+  }
+
+}
 
 // Record.create = (record) => {
 //   return
